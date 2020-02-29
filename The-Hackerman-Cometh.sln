@@ -5,7 +5,7 @@ VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
 Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "The-Hackerman-Cometh", "The-Hackerman-Cometh.csproj", "{8FF53D0A-C9CB-4F4E-8376-7EB099F75BEC}"
 EndProject
-Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "EntityFramework", "..\EntityFramework\EntityFramework.csproj", "{6E553850-7CFD-4C09-8F9E-89DD785BD9C9}"
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackerman.EntityFramework", "Hackerman.EntityFramework\Hackerman.EntityFramework.csproj", "{EF6344AA-EC5B-4DCE-824A-D791AC51606D}"
 EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
@@ -17,10 +17,10 @@ Global
 		{8FF53D0A-C9CB-4F4E-8376-7EB099F75BEC}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{8FF53D0A-C9CB-4F4E-8376-7EB099F75BEC}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{8FF53D0A-C9CB-4F4E-8376-7EB099F75BEC}.Release|Any CPU.Build.0 = Release|Any CPU
-		{6E553850-7CFD-4C09-8F9E-89DD785BD9C9}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
-		{6E553850-7CFD-4C09-8F9E-89DD785BD9C9}.Debug|Any CPU.Build.0 = Debug|Any CPU
-		{6E553850-7CFD-4C09-8F9E-89DD785BD9C9}.Release|Any CPU.ActiveCfg = Release|Any CPU
-		{6E553850-7CFD-4C09-8F9E-89DD785BD9C9}.Release|Any CPU.Build.0 = Release|Any CPU
+		{EF6344AA-EC5B-4DCE-824A-D791AC51606D}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{EF6344AA-EC5B-4DCE-824A-D791AC51606D}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{EF6344AA-EC5B-4DCE-824A-D791AC51606D}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{EF6344AA-EC5B-4DCE-824A-D791AC51606D}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
