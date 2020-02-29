@@ -7,6 +7,8 @@ Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "The-Hackerman-Cometh", "The
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackerman.EntityFramework", "Hackerman.EntityFramework\Hackerman.EntityFramework.csproj", "{EF6344AA-EC5B-4DCE-824A-D791AC51606D}"
 EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Web.Tests", "Web.Tests\Web.Tests.csproj", "{7FB4F0EF-BA48-4475-8C4B-3A943E480441}"
+EndProject
 Global
 	GlobalSection(SolutionConfigurationPlatforms) = preSolution
 		Debug|Any CPU = Debug|Any CPU
@@ -21,6 +23,10 @@ Global
 		{EF6344AA-EC5B-4DCE-824A-D791AC51606D}.Debug|Any CPU.Build.0 = Debug|Any CPU
 		{EF6344AA-EC5B-4DCE-824A-D791AC51606D}.Release|Any CPU.ActiveCfg = Release|Any CPU
 		{EF6344AA-EC5B-4DCE-824A-D791AC51606D}.Release|Any CPU.Build.0 = Release|Any CPU
+		{7FB4F0EF-BA48-4475-8C4B-3A943E480441}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{7FB4F0EF-BA48-4475-8C4B-3A943E480441}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{7FB4F0EF-BA48-4475-8C4B-3A943E480441}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{7FB4F0EF-BA48-4475-8C4B-3A943E480441}.Release|Any CPU.Build.0 = Release|Any CPU
 	EndGlobalSection
 	GlobalSection(SolutionProperties) = preSolution
 		HideSolutionNode = FALSE
