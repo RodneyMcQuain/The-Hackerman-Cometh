@@ -1,6 +1,7 @@
 import React, { useState } from 'react'
 import { Link } from 'gatsby'
 
+import HelloWorld from '../components/HelloWorld.tsx'
 import Layout from '../components/layout'
 import { FetchExampleData } from '../components/fetchExampleData'
 
@@ -15,6 +16,7 @@ const IndexPage = () => {
             <Link to="/page-2/">Go to page 2</Link>
             <br />
             <br />
+            <HelloWorld />
             <FetchExampleData />
         </Layout>
     )
