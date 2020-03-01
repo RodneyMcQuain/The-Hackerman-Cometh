@@ -3,7 +3,7 @@ Microsoft Visual Studio Solution File, Format Version 12.00
 # Visual Studio Version 16
 VisualStudioVersion = 16.0.29806.167
 MinimumVisualStudioVersion = 10.0.40219.1
-Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "The-Hackerman-Cometh", "The-Hackerman-Cometh.csproj", "{8FF53D0A-C9CB-4F4E-8376-7EB099F75BEC}"
+Project("{9A19103F-16F7-4668-BE54-9A1E7A4F7556}") = "Web", "Web\Web.csproj", "{8FF53D0A-C9CB-4F4E-8376-7EB099F75BEC}"
 EndProject
 Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "Hackerman.EntityFramework", "Hackerman.EntityFramework\Hackerman.EntityFramework.csproj", "{EF6344AA-EC5B-4DCE-824A-D791AC51606D}"
 EndProject
