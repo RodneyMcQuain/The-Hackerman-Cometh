@@ -4,7 +4,7 @@
 * Install [npm](https://www.npmjs.com/get-npm)
 * Install [yarn](https://classic.yarnpkg.com/en/docs/install/#windows-stable)
 * Run `npm i -g gatsby-cli`
-* Run `git clone https://CS360@dev.azure.com/CS360/The%20Hackerman%20Cometh/_git/The%20Hackerman%20Cometh` when prompted for a password get it from the pinned post on Discord
+* Run `git clone https://CS360@dev.azure.com/CS360/The-Hackerman-Cometh/_git/The-Hackerman-Cometh` when prompted for a password get it from the pinned post on Discord
 * In the `Web` project navigate to the `ClientApp` directory and run `yarn install`
 
 ## Run
