@@ -8,5 +8,6 @@ module.exports = {
         `gatsby-plugin-typescript`,
         `gatsby-plugin-tslint`,
         'gatsby-plugin-antd',
+        `gatsby-plugin-sass`,
     ],
 }
