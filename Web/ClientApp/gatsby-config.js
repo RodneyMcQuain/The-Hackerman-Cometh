@@ -6,6 +6,7 @@ module.exports = {
         `gatsby-plugin-react-helmet`,
         `gatsby-plugin-emotion`,
         `gatsby-plugin-typescript`,
-        `gatsby-plugin-tslint`
-    ]
+        `gatsby-plugin-tslint`,
+        'gatsby-plugin-antd',
+    ],
 }
