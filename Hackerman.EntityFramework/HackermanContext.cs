@@ -1,4 +1,5 @@
-﻿using Microsoft.EntityFrameworkCore;
+﻿using Hackerman.EntityFramework.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace Hackerman.EntityFramework
 {
@@ -7,5 +8,8 @@ namespace Hackerman.EntityFramework
         public HackermanContext(DbContextOptions<HackermanContext> options) : base(options)
         {
         }
+
+        public virtual DbSet<User> Users { get; set; }
     }
 }
+
