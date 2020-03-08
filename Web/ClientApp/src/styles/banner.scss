@@ -1,0 +1,48 @@
+﻿@import "variables.scss";
+
+#banner-img {
+    background-size: cover;
+    background-repeat: no-repeat;
+    background-position: center;
+    height: calc(100vh - #{$navbar-height});
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    padding: 0 $minor-spacing;
+}
+
+#banner-container {
+    margin-top: -25vh;
+    padding: 40px;
+
+    #banner-header {
+        font-weight: bold;
+        font-size: $banner-header-font-size;
+        color: white;
+        text-shadow: 2px 2px black;
+        margin: 0;
+        margin-bottom: $minor-spacing;
+        text-align: center;
+        line-height: $banner-header-font-size + 10px;
+    }
+
+    .banner-text {
+        margin-bottom: $minor-spacing;
+        font-size: 18px;
+        color: lightgray;
+        display: flex;
+        justify-content: center;
+        text-align: center;
+    }
+
+    .hide {
+        opacity: 0;
+    }
+
+    .appear {
+        opacity: 1;
+        transition: opacity 2s ease-in-out;
+    }
+}
+
