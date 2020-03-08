@@ -1,0 +1,20 @@
+﻿$navbar-height: 50px;
+
+$hide-transition: all .5s ease-in-out;
+$unhide-transition: opacity 1s ease-in-out;
+$minor-spacing: 10px;
+$banner-header-font-size: 60px;
+
+@mixin hide() {
+    height: 0;
+    opacity: 0;
+    visibility: hidden;
+    transition: $hide-transition;
+}
+
+@mixin unhide() {
+    height: 100%;
+    opacity: 1;
+    visibility: visible;
+    transition: $unhide-transition;
+}

@@ -3,3 +3,14 @@
     primary/secondary fonts, default font sizes for elements,
     colors, etc.
 */
+
+@import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
+@import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+
+h1, h2, h3, h4, h5, h6 {
+    font-family: 'Roboto', sans-serif;
+}
+
+p, span, div, a, li, button, select, textarea, option, input {
+    font-family: 'Open Sans', sans-serif;
+}
