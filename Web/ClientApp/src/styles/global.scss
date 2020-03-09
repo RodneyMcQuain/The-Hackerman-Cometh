@@ -14,3 +14,25 @@ h1, h2, h3, h4, h5, h6 {
 p, span, div, a, li, button, select, textarea, option, input {
     font-family: 'Open Sans', sans-serif;
 }
+
+.invalid {
+    color: red;
+
+    &:before {
+        content: "✘ ";
+    }
+}
+
+.valid {
+    color: green;
+
+    &:before {
+        content: "✓ ";
+    }
+}
+
+.-center-container {
+    margin: 0 auto;
+    padding: 10px;
+    text-align: center;
+}
