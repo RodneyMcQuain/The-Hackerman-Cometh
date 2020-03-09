@@ -1,0 +1,23 @@
+﻿@import "variables.scss";
+
+.top-nav {
+    height: $navbar-height;
+
+    .brand {
+        font-size: 1.5em;
+    }
+
+    .brand-icon {
+        font-size: 1em;
+    }
+
+    .brand {
+        margin-right: auto;
+        display: flex;
+    }
+
+    &:not(.brand) {
+        display: flex;
+        justify-content: right;
+    }
+}
