@@ -1,20 +1,19 @@
 ﻿import * as React from 'react';
-// import { IUser } from '../models/IUser';
-// import { formatDate } from '../services/formatDate';
-// import { handleResponse } from '../services/handleResponse';
+import { IUser } from '../models/IUser';
+import { formatDate } from '../services/formatDate';
+import { handleResponse } from '../services/handleResponse';
 // import { Preloader } from '../Components/Preloader';
 // import { PasswordValidation } from '../components/SignUp/PasswordValidation';
 // import { UsernameValidationText } from '../components/SignUp/UsernameValidationText';
 // import { EmailValidationText } from '../components/SignUp/EmailValidationText';
-// import { navigate } from 'gatsby';
+import { navigate } from 'gatsby';
 import Layout from '../components/Layout/layout';
 import { QuestionCircleOutlined } from '@ant-design/icons';
 import { useState } from 'react';
 import { Form, Input, Tooltip, Cascader, Select, Row, Col, Checkbox, Button, AutoComplete, } from 'antd';
 
-const { Option } = Select;
-const AutoCompleteOption = AutoComplete.Option;
 const formItemLayout = {
+    maxWidth: 200,
     labelCol: {
         xs: {
             span: 10,
@@ -25,17 +24,22 @@ const formItemLayout = {
     },
     wrapperCol: {
         xs: {
-            span: 12,
+            span: 24,
         },
         sm: {
             span: 16,
         },
     },
 };
+const inputLayout = {
+    maxWidth: 200,
+
+};
+
 const tailFormItemLayout = {
     wrapperCol: {
         xs: {
-            span: 12,
+            span: 24,
             offset: 0,
         },
         sm: {
@@ -47,139 +51,176 @@ const tailFormItemLayout = {
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
+    const [isLoading, setIsLoading] = useState(true);
+    const [serverError, setServerError] = useState();
+    const onFinish = userInfo => {
+        console.log(userInfo);
+        const userInfoForPost = modifyUserBeforePost(userInfo);
+        setIsLoading(true);
 
-    const onFinish = values => {
-        console.log('Received values of form: ', values);
+
+        fetch(`api/User/`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userInfoForPost)
+        })
+            .then(response => handleResponse(navigate, response))
+            .then(response => {
+                
+                // if(  >= 400){
+
+                // }
+                // else{
+                setIsLoading(false);
+
+                navigate('/log-in');
+                // }
+            })
+            .catch(error => {
+                setIsLoading(false)
+
+                console.log(error);
+            });
+
     };
 
-    const prefixSelector = (
-        <Form.Item name="prefix" noStyle>
-            <Select
-                style={{
-                    width: 70,
-                }}
-            >
-                <Option value="86">+86</Option>
-                <Option value="87">+87</Option>
-            </Select>
-        </Form.Item>
-    );
-    const [autoCompleteResult, setAutoCompleteResult] = useState([]);
-
-    const onWebsiteChange = value => {
-        if (!value) {
-            setAutoCompleteResult([]);
-        } else {
-            setAutoCompleteResult(['.com', '.org', '.net'].map(domain => `${value}${domain}`));
-        }
-    };
-
-    const websiteOptions = autoCompleteResult.map(website => ({
-        label: website,
-        value: website,
-    }));
     return (
-        <Form
-            {...formItemLayout}
-            form={form}
-            name="register"
-            onFinish={onFinish}
-            initialValues={{
-                residence: ['zhejiang', 'hangzhou', 'xihu'],
-                prefix: '86',
-            }}
-            scrollToFirstError
-        >
-            <Form.Item
-                name="email"
-                label="E-mail"
-                rules={[
-                    {
-                        type: 'email',
-                        message: 'The input is not valid E-mail!',
-                    },
-                    {
-                        required: true,
-                        message: 'Please input your E-mail!',
-                    },
-                ]}
+        <Layout>
+            <Form
+                {...formItemLayout}
+                form={form}
+                name="register"
+                onFinish={onFinish}
+                scrollToFirstError
             >
-                <Input />
-            </Form.Item>
-
-            <Form.Item
-                name="password"
-                label="Password"
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please input your password!',
-                    },
-                ]}
-                hasFeedback
-            >
-
-            <Input.Password />
-            </Form.Item>
-
-            <Form.Item
-                name="confirm"
-                label="Confirm Password"
-                dependencies={['password']}
-                hasFeedback
-                rules={[
-                    {
-                        required: true,
-                        message: 'Please confirm your password!',
-                    },
-                    ({ getFieldValue }) => ({
-                        validator(rule, value) {
-                            if (!value || getFieldValue('password') === value) {
-                                return Promise.resolve();
-                            }
-
-                            return Promise.reject('The two passwords that you entered do not match!');
+                <Form.Item
+                    name="username"
+                    label="User Name"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input a username!'
                         },
-                    }),
-                ]}
-            >
-            <Input.Password />
-            </Form.Item>
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+                <Form.Item
+                    name="email"
+                    label="E-mail"
+                    rules={[
+                        {
+                            type: 'email',
+                            message: 'The input is not valid E-mail!',
+                        },
+                        {
+                            required: true,
+                            message: 'Please input your E-mail!',
+                        },
+                        ({ getFieldValue }) => ({
+                            validator(rule) {
+                                const email = getFieldValue('email');
 
-            <Form.Item label="Captcha" extra="We must make sure that your are a human.">
-                <Row gutter={8}>
-                    <Col span={12}>
-                        <Form.Item
-                            name="captcha"
-                            noStyle
-                            rules={[
-                                {
-                                    required: true,
-                                    message: 'Please input the captcha you got!',
-                                },
-                            ]}
-                        >
-                            <Input />
-                        </Form.Item>
-                    </Col>
-                    <Col span={12}>
-                        <Button>Get captcha</Button>
-                    </Col>
-                </Row>
-            </Form.Item>
+                                return fetch(`api/User/CheckEmail/${email}`)
+                                    .then(response => handleResponse(navigate, response))
 
-            <Form.Item name="agreement" valuePropName="checked" {...tailFormItemLayout}>
-                <Checkbox>
-                    I have read the <a href="">agreement</a>
-                </Checkbox>
-            </Form.Item>
-            <Form.Item {...tailFormItemLayout}>
-                <Button type="primary" htmlType="submit">
-                    Register
+                                    .then(response => {
+                                        if(response.status === 400)
+                                            return Promise.reject('Email is already in use!');
+                                        else
+                                            return Promise.resolve();
+                                })
+
+                            }
+                        })
+                    ]}
+                >
+                    <Input />
+                </Form.Item>
+
+                <Form.Item
+                    name="password"
+                    label="Password"
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please input your password!',
+                        },
+                        ({ getFieldValue }) => ({
+                            validator(rule) {
+                                const value = getFieldValue('password');
+
+                                if (value.search('[A-Z]') === -1) {
+                                    return Promise.reject('Must Contain an upper-case character!');
+                                }
+                                else if (value.search('[a-z]') === -1) {
+                                    return Promise.reject('Must contain a lower-case Letter!');
+                                }
+                                else if (value.search('[0-9]') === -1) {
+                                    return Promise.reject('Must contain a number!');
+                                }
+                                else if (value.length <= 8) {
+                                    return Promise.reject('Must contain atleast 8 characters!')
+                                }
+                                else {
+                                    return Promise.resolve();
+                                }
+                            }
+                        })
+                    ]}
+                    hasFeedback
+                >
+
+                    <Input.Password />
+                </Form.Item>
+
+                <Form.Item
+                    name="confirm"
+                    label="Confirm Password"
+                    dependencies={['password']}
+                    hasFeedback
+                    rules={[
+                        {
+                            required: true,
+                            message: 'Please confirm your password!',
+                        },
+                        ({ getFieldValue }) => ({
+                            validator(rule, value) {
+                                if (!rule) {
+                                    return Promise.reject('Test');
+                                }
+                                if (!value || getFieldValue('password') === value) {
+                                    return Promise.resolve();
+                                }
+
+                                return Promise.reject('The two passwords that you entered do not match!');
+                            },
+                        }),
+                    ]}
+                >
+                    <Input.Password />
+                </Form.Item>
+
+                <Form.Item {...tailFormItemLayout}>
+                    <Button type="primary" htmlType="submit">
+                        Register
                 </Button>
-            </Form.Item>
-        </Form>
+                </Form.Item>
+            </Form>
+        </Layout>
     );
+
+    function modifyUserBeforePost(user: IUser): IUser {
+        user.email = user.email.trim();
+        user.username = user.username.trim();
+        let today = new Date().toString();
+        user.dateCreated = formatDate(today);
+
+        return user;
+    }
 };
 
 export default RegistrationForm;
@@ -404,14 +445,14 @@ export default RegistrationForm;
 //             });
 //     }
 
-//     private modifyUserBeforePost(user: IUser): IUser {
-//         user.email = user.email.trim();
-//         user.username = user.username.trim();
-//         let today = new Date().toString();
-//         user.dateCreated = formatDate(today);
+    // modifyUserBeforePost(user: IUser): IUser {
+    //     user.email = user.email.trim();
+    //     user.username = user.username.trim();
+    //     let today = new Date().toString();
+    //     user.dateCreated = formatDate(today);
 
-//         return user;
-//     }
+    //     return user;
+    // }
 // }
 
 // export default SignUp;

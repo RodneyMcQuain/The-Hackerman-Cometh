@@ -17,28 +17,14 @@ h1, h2, h3, h4, h5, h6 {
 
 p, span, div, a, li, button, select, textarea, option, label {
     font-family: 'Open Sans', sans-serif;
-    color: gray !important;
+}
+
+label {
+    color: white !important;
 }
 
 input {
-    width: 100px;  
-    max-width: 100px;  
-}
-
-.invalid {
-    color: red !important;
-
-    &:before {
-        content: "✘ ";
-    }
-}
-
-.valid {
-    color: green !important;
-
-    &:before {
-        content: "✓ ";
-    }
+    color: black !important;
 }
 
 .-center-container {
