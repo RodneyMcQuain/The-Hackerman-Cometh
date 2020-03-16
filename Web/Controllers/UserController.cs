@@ -142,9 +142,9 @@ namespace The_Hackerman_Cometh.Controllers
                 return BadRequest(new { responseMessage = "Password must contain a uppercase letter" });
 
             // Check if password has a symbol
-            // string symbolRegex = @"[?!@#$%^&*]";
-            // if (!Regex.IsMatch(password, symbolRegex))
-            //     return BadRequest(new { responseMessage = "Password must contain a symbol (?!@#$%^&*)" });
+            string symbolRegex = @"[?!@#$%^&*]";
+            if (!Regex.IsMatch(password, symbolRegex))
+                return BadRequest(new { responseMessage = "Password must contain a symbol (?!@#$%^&*)" });
 
             // Salt and hash password
             byte[] salt = CreateSalt();
