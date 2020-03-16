@@ -4,7 +4,6 @@ import { formatDate } from '../services/formatDate';
 import { handleResponse } from '../services/handleResponse';
 import { navigate } from 'gatsby';
 import Layout from '../components/Layout/layout';
-import { useState } from 'react';
 import { Form, Input, Tooltip, Button,} from 'antd';
 import '../styles/sign-up.scss';
 
@@ -27,41 +26,21 @@ const tailFormItemLayout = {
         },
         sm: {
             span: 14,
-            offset: 6,
+            offset: 11,
         },
     },
 };
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
-    const onFinish = userInfo => {
-        console.log(userInfo);
-        const userInfoForPost = modifyUserBeforePost(userInfo);
-
-        fetch(`api/User/`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userInfoForPost)
-        })
-            .then(response => handleResponse(navigate, response))
-            .then(response => {
-                navigate('/log-in');
-            })
-            .catch(error => {
-                console.log(error);
-            });
-
-    };
 
     return (
         <Layout>
+            <h1>Sign Up</h1>
             <Form
                 form={form}
                 name="register"
-                onFinish={onFinish}
+                onFinish={userInfo => saveUserInfo(userInfo)}
                 scrollToFirstError
             >
                 <Form.Item
@@ -95,7 +74,7 @@ const RegistrationForm = () => {
                     rules={[
                         {
                             type: 'email',
-                            message: 'The input is not valid E-mail!',
+                            message: 'Email is invalid!',
                         },
                         {
                             required: true,
@@ -157,12 +136,31 @@ const RegistrationForm = () => {
                 
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
-                        Register
+                        Sign Up
                     </Button>
                 </Form.Item>
             </Form>
         </Layout>
     );
+
+    function saveUserInfo(userInfo){
+        
+            const userInfoForPost = modifyUserBeforePost(userInfo);
+
+            fetch(`api/User/`, {
+                method: 'POST',
+                headers: {
+                    'Accept': 'application/json',
+                    'Content-Type': 'application/json'
+                },
+                body: JSON.stringify(userInfoForPost)
+            })
+                .then(response => handleResponse(navigate, response))
+                .then(() => {
+                    navigate('/log-in');
+                });
+        
+    }
 
     function modifyUserBeforePost(user: IUser): IUser {
         user.email = user.email.trim();
@@ -200,22 +198,22 @@ const RegistrationForm = () => {
             });
     }
 
-    function validatePasswordRequirments(value){
+    function validatePasswordRequirments(password){
         let message = "";
 
-        if (value.search('[A-Z]') === -1)
+        if (password.search('[A-Z]') === -1)
             message += 'an upper-case character,\n';
 
-        if (value.search('[a-z]') === -1)
+        if (password.search('[a-z]') === -1)
             message += ' a lower-case character,\n';
 
-        if (value.search('[0-9]') === -1)
+        if (password.search('[0-9]') === -1)
             message += ' a number\n';
 
-        if (value.search('[?!@#$%^&*]') === -1)
+        if (password.search('[?!@#$%^&*]') === -1)
             message += ' one of the following special characters \'?!@#$%^&*\',\n';
 
-        if (value.length <= 8)
+        if (password.length <= 8)
             message += ' atleast 8 characters,\n';
 
         if (message !== "")
@@ -224,9 +222,9 @@ const RegistrationForm = () => {
             return Promise.resolve();
     }
 
-    function verifyPassword(value, password){
+    function verifyPassword(password, passwordValidationString){
 
-        if (!value || password === value) {
+        if (!password || passwordValidationString === password) {
             return Promise.resolve();
         }
 

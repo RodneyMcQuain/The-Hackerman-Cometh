@@ -6,7 +6,7 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
-@import '~antd/dist/antd.dark.css';
+// @import '~antd/dist/antd.dark.css';
 
 
 
@@ -19,16 +19,10 @@ p, span, div, a, li, button, select, textarea, option, label {
     font-family: 'Open Sans', sans-serif;
 }
 
-label {
-    color: white !important;
-}
+// label {
+//     color: white !important;
+// }
 
-input {
-    color: black !important;
-}
-
-.-center-container {
-    margin: 0 auto !important;
-    padding: 10px !important;
-    text-align: center !important;
-}
+// input {
+//     color: black !important;
+// }
