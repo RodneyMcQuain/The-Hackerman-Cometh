@@ -6,7 +6,31 @@ import { navigate } from 'gatsby';
 import Layout from '../components/Layout/layout';
 import { useState } from 'react';
 import { Form, Input, Tooltip, Button,} from 'antd';
-import '../styles/signup.scss';
+import '../styles/sign-up.scss';
+
+const formItemLayout = {
+    labelCol: {
+        xs: { span: 24 },
+        sm: { span: 6 },
+    },
+    wrapperCol: {
+        xs: { span: 24 },
+        sm: { span: 14 },
+    },
+};
+
+const tailFormItemLayout = {
+    wrapperCol: {
+        xs: {
+            span: 24,
+            offset: 0,
+        },
+        sm: {
+            span: 14,
+            offset: 6,
+        },
+    },
+};
 
 const RegistrationForm = () => {
     const [form] = Form.useForm();
@@ -41,8 +65,10 @@ const RegistrationForm = () => {
                 scrollToFirstError
             >
                 <Form.Item
+                    {...formItemLayout}
                     name="username"
                     label="User Name"
+                    className="sign-up-field"
                     rules={[
                         {
                             required: true,
@@ -63,6 +89,7 @@ const RegistrationForm = () => {
                     <Input />
                 </Form.Item>
                 <Form.Item
+                    {...formItemLayout}
                     name="email"
                     label="E-mail"
                     rules={[
@@ -86,6 +113,7 @@ const RegistrationForm = () => {
                 </Form.Item>
 
                 <Form.Item
+                    {...formItemLayout}
                     name="password"
                     label="Password"
                     rules={[
@@ -106,6 +134,7 @@ const RegistrationForm = () => {
                 </Form.Item>
 
                 <Form.Item
+                    {...formItemLayout}
                     name="confirm"
                     label="Confirm Password"
                     dependencies={['password']}
@@ -126,13 +155,11 @@ const RegistrationForm = () => {
                     <Input.Password />
                 </Form.Item>
                 
-                <div id="centerBtn">
-                    <Form.Item>
-                        <Button type="primary" htmlType="submit">
-                            Register
-                        </Button>
-                    </Form.Item>
-                </div>
+                <Form.Item {...tailFormItemLayout}>
+                    <Button type="primary" htmlType="submit">
+                        Register
+                    </Button>
+                </Form.Item>
             </Form>
         </Layout>
     );
