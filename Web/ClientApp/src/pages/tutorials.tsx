@@ -1,6 +1,7 @@
 ﻿import * as React from 'react'
-import { Link } from 'gatsby'
-import {Layout, Card, Col, Row, Button, Form } from 'antd'
+import { Card, Col, Row, Button } from 'antd'
+import Layout from '../components/Layout/layout'
+import Banner from '../components/Index/Banner'
 
 interface Tutorial {
     name: string,
@@ -10,9 +11,9 @@ interface Tutorial {
 
 const Tutorial = [
     {
-        name:"Server-Side Includes Injection",
+        name: "Server-Side Includes Injection",
         description: "A server side injection is a very simple hacking method, the user inputs simple Linux commands into any given text input and as a result the command is executed. Commonly used for gaining access to local file systems.",
-        link:"ssi-injection",
+        link: "ssi-injection",
     },
     {
         name:"Structured Query Language Injection",
@@ -41,7 +42,7 @@ const Tutorials = () => (
                        
                     </Card>
                 </Col>
-            ))}
+            ))};
         </Row>
     </Layout>
 );
