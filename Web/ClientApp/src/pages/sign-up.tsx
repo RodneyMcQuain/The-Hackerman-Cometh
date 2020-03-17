@@ -4,7 +4,7 @@ import { formatDate } from '../services/formatDate';
 import { handleResponse } from '../services/handleResponse';
 import { navigate } from 'gatsby';
 import Layout from '../components/Layout/layout';
-import { Form, Input, Tooltip, Button,} from 'antd';
+import { Form, Input, Tooltip, Button, } from 'antd';
 import '../styles/sign-up.scss';
 
 const formItemLayout = {
@@ -56,10 +56,9 @@ const RegistrationForm = () => {
                             whitespace: true,
                             message: 'User name cannot be whitespace!'
                         },
-                        ({getFieldValue}) => ({
-                            validator(value) {
-                                const userName = getFieldValue('username');
-                                return validateUserName(value, userName);
+                        () => ({
+                            validator(_rule, value) {
+                                return validateUserName(value);
                             }
                         })
                     ]}
@@ -80,10 +79,9 @@ const RegistrationForm = () => {
                             required: true,
                             message: 'Please input your E-mail!',
                         },
-                        ({ getFieldValue }) => ({
-                            validator(rule, value) {
-                                const email = getFieldValue('email');
-                                return validateEmail(value, email);
+                        () => ({
+                            validator(_rule, value) {
+                                return validateEmail(value);
                             }
                         })
                     ]}
@@ -101,8 +99,8 @@ const RegistrationForm = () => {
                             required: true,
                             message: 'Please input password!',
                         },
-                        ({ getFieldValue }) => ({
-                            validator(rule, value){
+                        () => ({
+                            validator(_rule, value) {
                                 return validatePasswordRequirments(value);
                             }
                         })
@@ -125,7 +123,7 @@ const RegistrationForm = () => {
                             message: 'Please confirm your password!',
                         },
                         ({ getFieldValue }) => ({
-                            validator(rule, value) {
+                            validator(_rule, value) {
                                 const password = getFieldValue('password');
                                 return verifyPassword(value, password);
                             },
@@ -134,7 +132,7 @@ const RegistrationForm = () => {
                 >
                     <Input.Password />
                 </Form.Item>
-                
+
                 <Form.Item {...tailFormItemLayout}>
                     <Button type="primary" htmlType="submit">
                         Sign Up
@@ -171,8 +169,8 @@ const RegistrationForm = () => {
         return user;
     }
 
-    function validateUserName(value, userName){
-        if (!value || userName.trim() === "")
+    function validateUserName(userName) {
+        if (userName?.trim() === "")
             return Promise.reject();
 
         return fetch(`api/User/CheckUsername/${userName}`)
@@ -184,12 +182,12 @@ const RegistrationForm = () => {
                     return Promise.resolve();
             });
     }
-    
-    function validateEmail(value, email){
-        if (!value || email.trim() === "")
+
+    function validateEmail(email) {
+        if (email?.trim() === "")
             return Promise.reject();
 
-        return fetch(`api/User/CheckEmail/${value}`)
+        return fetch(`api/User/CheckEmail/${email}`)
             .then(response => {
                 if (response.status === 400)
                     return Promise.reject('Email is already in use!');
@@ -198,7 +196,7 @@ const RegistrationForm = () => {
             });
     }
 
-    function validatePasswordRequirments(password){
+    function validatePasswordRequirments(password) {
         let message = "";
 
         if (password.search('[A-Z]') === -1)
@@ -222,7 +220,7 @@ const RegistrationForm = () => {
             return Promise.resolve();
     }
 
-    function verifyPassword(password, passwordValidationString){
+    function verifyPassword(password, passwordValidationString) {
 
         if (!password || passwordValidationString === password) {
             return Promise.resolve();
