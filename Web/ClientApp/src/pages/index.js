@@ -1,25 +1,13 @@
-import React, { useState } from 'react'
-import { Link } from 'gatsby'
-
-import HelloWorld from '../components/HelloWorld.tsx'
-import Layout from '../components/layout'
-import { FetchExampleData } from '../components/fetchExampleData'
+import React from 'react';
+import Layout from '../components/Layout/layout';
+import Banner from '../components/Index/Banner';
 
 const IndexPage = () => {
-    const [thing, setThing] = useState(1);
-
     return (
         <Layout>
-            <h1>Hi people</h1>
-            <p>Welcome to your new Gatsby site.</p>
-            <p>Now go build {thing}</p>
-            <Link to="/page-2/">Go to page 2</Link>
-            <br />
-            <br />
-            <HelloWorld />
-            <FetchExampleData />
+            <Banner />
         </Layout>
-    )
+    );
 };
 
-export default IndexPage
+export default IndexPage;
