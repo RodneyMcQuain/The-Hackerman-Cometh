@@ -141,93 +141,94 @@ const RegistrationForm = () => {
             </Form>
         </Layout>
     );
-
-    function saveUserInfo(userInfo) {
-        const userInfoForPost = modifyUserBeforePost(userInfo);
-
-        fetch(`api/User/`, {
-            method: 'POST',
-            headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json'
-            },
-            body: JSON.stringify(userInfoForPost)
-        })
-            .then(response => handleResponse(navigate, response))
-            .then(() => {
-                navigate('/log-in');
-            });
-
-    }
-
-    function modifyUserBeforePost(user: IUser): IUser {
-        user.email = user.email.trim();
-        user.username = user.username.trim();
-        const today = new Date().toString();
-        user.dateCreated = formatDate(today);
-
-        return user;
-    }
-
-    function validateUserName(userName) {
-        if (userName?.trim() === "")
-            return Promise.reject();
-
-        return fetch(`api/User/CheckUsername/${userName}`)
-            .then(response => handleResponse(navigate, response))
-            .then(response => {
-                if (response.status === 400)
-                    return Promise.reject('User-Name is already in use!');
-                else
-                    return Promise.resolve();
-            });
-    }
-
-    function validateEmail(email) {
-        if (email?.trim() === "")
-            return Promise.reject();
-
-        return fetch(`api/User/CheckEmail/${email}`)
-            .then(response => {
-                if (response.status === 400)
-                    return Promise.reject('Email is already in use!');
-                else
-                    return Promise.resolve();
-            });
-    }
-
-    function validatePasswordRequirments(password) {
-        let message = "";
-
-        if (password.search('[A-Z]') === -1)
-            message += 'an upper-case character,\n';
-
-        if (password.search('[a-z]') === -1)
-            message += ' a lower-case character,\n';
-
-        if (password.search('[0-9]') === -1)
-            message += ' a number\n';
-
-        if (password.search('[?!@#$%^&*]') === -1)
-            message += ' one of the following special characters \'?!@#$%^&*\',\n';
-
-        if (password.length <= 8)
-            message += ' atleast 8 characters,\n';
-
-        if (message !== "")
-            return Promise.reject("Passwords must contain: " + message);
-        else
-            return Promise.resolve();
-    }
-
-    function verifyPassword(password, passwordValidationString) {
-
-        if (!password || passwordValidationString === password) {
-            return Promise.resolve();
-        }
-
-        return Promise.reject('The two passwords that you entered do not match!');
-    }
 };
+
+function saveUserInfo(userInfo) {
+    const userInfoForPost = modifyUserBeforePost(userInfo);
+
+    fetch(`api/User/`, {
+        method: 'POST',
+        headers: {
+            'Accept': 'application/json',
+            'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(userInfoForPost)
+    })
+        .then(response => handleResponse(navigate, response))
+        .then(() => {
+            navigate('/log-in');
+        });
+
+}
+
+function modifyUserBeforePost(user: IUser): IUser {
+    user.email = user.email.trim();
+    user.username = user.username.trim();
+    const today = new Date().toString();
+    user.dateCreated = formatDate(today);
+
+    return user;
+}
+
+function validateUserName(userName) {
+    if (userName?.trim() === "")
+        return Promise.reject();
+
+    return fetch(`api/User/CheckUsername/${userName}`)
+        .then(response => handleResponse(navigate, response))
+        .then(response => {
+            if (response.status === 400)
+                return Promise.reject('User-Name is already in use!');
+            else
+                return Promise.resolve();
+        });
+}
+
+function validateEmail(email) {
+    if (email?.trim() === "")
+        return Promise.reject();
+
+    return fetch(`api/User/CheckEmail/${email}`)
+        .then(response => {
+            if (response.status === 400)
+                return Promise.reject('Email is already in use!');
+            else
+                return Promise.resolve();
+        });
+}
+
+function validatePasswordRequirments(password) {
+    let message = "";
+
+    if (password.search('[A-Z]') === -1)
+        message += 'an upper-case character,\n';
+
+    if (password.search('[a-z]') === -1)
+        message += ' a lower-case character,\n';
+
+    if (password.search('[0-9]') === -1)
+        message += ' a number\n';
+
+    if (password.search('[?!@#$%^&*]') === -1)
+        message += ' one of the following special characters \'?!@#$%^&*\',\n';
+
+    if (password.length <= 8)
+        message += ' atleast 8 characters,\n';
+
+    if (message !== "")
+        return Promise.reject("Passwords must contain: " + message);
+    else
+        return Promise.resolve();
+}
+
+function verifyPassword(password, passwordValidationString) {
+
+    if (!password || passwordValidationString === password) {
+        return Promise.resolve();
+    }
+
+    return Promise.reject('The two passwords that you entered do not match!');
+}
+
 
 export default RegistrationForm;
