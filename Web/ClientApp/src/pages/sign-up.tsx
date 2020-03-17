@@ -41,7 +41,6 @@ const RegistrationForm = () => {
                 form={form}
                 name="register"
                 onFinish={userInfo => saveUserInfo(userInfo)}
-                scrollToFirstError
             >
                 <Form.Item
                     {...formItemLayout}
@@ -64,6 +63,7 @@ const RegistrationForm = () => {
                             }
                         })
                     ]}
+                    hasFeedback
                 >
                     <Input />
                 </Form.Item>
@@ -87,6 +87,7 @@ const RegistrationForm = () => {
                             }
                         })
                     ]}
+                    hasFeedback
                 >
                     <Input />
                 </Form.Item>
@@ -143,23 +144,22 @@ const RegistrationForm = () => {
         </Layout>
     );
 
-    function saveUserInfo(userInfo){
-        
-            const userInfoForPost = modifyUserBeforePost(userInfo);
+    function saveUserInfo(userInfo) {
+        const userInfoForPost = modifyUserBeforePost(userInfo);
 
-            fetch(`api/User/`, {
-                method: 'POST',
-                headers: {
-                    'Accept': 'application/json',
-                    'Content-Type': 'application/json'
-                },
-                body: JSON.stringify(userInfoForPost)
-            })
-                .then(response => handleResponse(navigate, response))
-                .then(() => {
-                    navigate('/log-in');
-                });
-        
+        fetch(`api/User/`, {
+            method: 'POST',
+            headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json'
+            },
+            body: JSON.stringify(userInfoForPost)
+        })
+            .then(response => handleResponse(navigate, response))
+            .then(() => {
+                navigate('/log-in');
+            });
+
     }
 
     function modifyUserBeforePost(user: IUser): IUser {
