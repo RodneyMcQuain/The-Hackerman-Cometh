@@ -1,0 +1,26 @@
+﻿@import 'variables.scss';
+
+.ant-popover {
+    .ant-popover-inner {
+        padding-top: 10px;
+    }
+
+    &.low-z-index {
+        z-index: $fade-z-index - 1;
+    }
+
+    &.max-width {
+        max-width: 300px;
+    }
+
+    .popover-title-container {
+        position: relative;
+    }
+
+    .close-icon {
+        position: absolute;
+        font-size: 10px;
+        top: -10px;
+        right: -10px;
+    }
+}

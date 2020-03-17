@@ -31,11 +31,15 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\components\Tutorial\Layout\TutorialLayout.tsx" />
+  </ItemGroup>
+
+  <ItemGroup>
     <ProjectReference Include="..\Hackerman.EntityFramework\Hackerman.EntityFramework.csproj" />
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\static\" />
+    <TypeScriptCompile Include="ClientApp\src\components\Tutorial\Layout\TutorialLayout.tsx" />
   </ItemGroup>
   
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
