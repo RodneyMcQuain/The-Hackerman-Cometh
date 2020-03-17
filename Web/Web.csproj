@@ -34,6 +34,7 @@
 
   <ItemGroup>
     <None Remove="ClientApp\src\pages\sign-up.tsx" />
+    <None Remove="ClientApp\src\components\Tutorial\Layout\TutorialLayout.tsx" />
   </ItemGroup>
 
   <ItemGroup>
@@ -41,7 +42,7 @@
   </ItemGroup>
 
   <ItemGroup>
-    <Folder Include="ClientApp\static\" />
+    <TypeScriptCompile Include="ClientApp\src\components\Tutorial\Layout\TutorialLayout.tsx" />
   </ItemGroup>
 
   <ItemGroup>

@@ -1,0 +1,86 @@
+﻿@import 'variables.scss';
+$fade-transition-time: 0.5s;
+
+.tutorial-content-container {
+    position: relative;
+
+    .fade-container {
+        min-width: 100vw;
+        min-height: 100%;
+        background-color: rgba(0, 0, 0, 0.7);
+        transition: visibility 0s $fade-transition-time, opacity $fade-transition-time;
+        position: absolute;
+        z-index: $fade-z-index;
+
+        &.hide {
+            opacity: 0;
+            visibility: hidden;
+
+            .practice-button {
+                display: none;
+            }
+        }
+    }
+
+    .tutorial-content {
+        z-index: $fade-z-index - 2;
+        margin: 15px;
+    }
+}
+
+.tutorial-sidebar {
+    padding: 10px 15px;
+
+    h1 {
+        font-size: 20px;
+    }
+
+    * {
+        color: white;
+    }
+}
+
+.ant-layout-sider-collapsed {
+    .ant-layout-sider-children {
+        display: none;
+    }
+}
+
+.upper-align-center {
+    position: absolute;
+    top: 35%;
+    left: 50%;
+    transform: translate(-50%, -50%);
+}
+
+.congrats-container {
+    opacity: 0;
+    transition: opacity 1s ease-in-out;
+
+    &.appear {
+        opacity: 1;
+    }
+
+    button:first-of-type {
+        margin-right: 5px;
+        margin-bottom: 10px;
+    }
+}
+
+.minor-pulse {
+    animation: minor-pulse 1.5s infinite;
+}
+
+@keyframes minor-pulse {
+    0% {
+        box-shadow: 0 0 0 0px rgba(24,144,255, 0.2);
+    }
+
+    100% {
+        box-shadow: 0 0 0 20px rgba(24, 144, 255, 0);
+    }
+}
+
+.ant-card {
+    max-width: 350px;
+}
