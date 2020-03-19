@@ -33,6 +33,8 @@
   </ItemGroup>
 
   <ItemGroup>
+    <None Remove="ClientApp\src\models\IToken.ts" />
+    <None Remove="ClientApp\src\models\token.ts" />
     <None Remove="ClientApp\src\pages\sign-up.tsx" />
     <None Remove="ClientApp\src\components\Tutorial\Layout\TutorialLayout.tsx" />
   </ItemGroup>
@@ -43,6 +45,8 @@
 
   <ItemGroup>
     <TypeScriptCompile Include="ClientApp\src\components\Tutorial\Layout\TutorialLayout.tsx" />
+    <TypeScriptCompile Include="ClientApp\src\models\IToken.ts" />
+    <TypeScriptCompile Include="ClientApp\src\services\token.ts" />
   </ItemGroup>
 
   <ItemGroup>

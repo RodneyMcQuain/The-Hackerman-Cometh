@@ -3,9 +3,8 @@ import { IUser } from '../models/IUser';
 import { formatDate } from '../services/formatDate';
 import { handleResponse } from '../services/handleResponse';
 import { navigate } from 'gatsby';
-import Layout from '../components/Layout/layout';
-import { Form, Input, Tooltip, Button, } from 'antd';
-import '../styles/sign-up.scss';
+import PaddingLayout from '../components/Layout/PaddingLayout';
+import { Form, Input, Button, } from 'antd';
 
 const formItemLayout = {
     labelCol: {
@@ -26,7 +25,7 @@ const tailFormItemLayout = {
         },
         sm: {
             span: 14,
-            offset: 11,
+            offset: 6,
         },
     },
 };
@@ -35,13 +34,16 @@ const RegistrationForm = () => {
     const [form] = Form.useForm();
 
     return (
-        <Layout>
-            <h1>Sign Up</h1>
+        <PaddingLayout>
             <Form
                 form={form}
+                className="user-form"
                 name="register"
                 onFinish={userInfo => saveUserInfo(userInfo)}
             >
+                <Form.Item {...tailFormItemLayout} className="margin-bottom-0">
+                    <h1>Sign Up</h1>
+                </Form.Item>
                 <Form.Item
                     {...formItemLayout}
                     name="username"
@@ -139,7 +141,7 @@ const RegistrationForm = () => {
                     </Button>
                 </Form.Item>
             </Form>
-        </Layout>
+        </PaddingLayout>
     );
 };
 
