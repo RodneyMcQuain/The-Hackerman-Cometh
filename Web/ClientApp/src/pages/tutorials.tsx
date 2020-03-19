@@ -1,7 +1,7 @@
 ﻿import * as React from 'react'
 import { Link } from 'gatsby'
-import { Card, Col, Row, Button } from 'antd'
-import Layout from '../components/Layout/layout'
+import { Card, Col, Row, Button } from 'antd' 
+import { Layout as AntDLayout } from '../components/Layout/layout'
 import Banner from '../components/Index/Banner'
 import { tutorials } from '../data/tutorials'
 
@@ -13,7 +13,7 @@ interface Tutorial {
 
 
 const Tutorials = () => (
-    <Layout>
+    <AntDLayout>
         <Row gutter={16} justify="center">
             {tutorials.map(tutorial => (
                 <Col span={8} flex="auto">
@@ -30,6 +30,6 @@ const Tutorials = () => (
                 </Col>
             ))};
         </Row>
-    </Layout>
+    </AntDLayout>
 );
 export default Tutorials;
