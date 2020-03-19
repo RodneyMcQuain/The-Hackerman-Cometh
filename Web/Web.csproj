@@ -17,6 +17,10 @@
       <PrivateAssets>all</PrivateAssets>
       <IncludeAssets>runtime; build; native; contentfiles; analyzers; buildtransitive</IncludeAssets>
     </PackageReference>
+<<<<<<<<< Temporary merge branch 1
+    <PackageReference Include="Microsoft.IdentityModel.Tokens" Version="5.6.0" />
+=========
+>>>>>>>>> Temporary merge branch 2
     <PackageReference Include="NUnit" Version="3.12.0" />
     <PackageReference Include="NUnit3TestAdapter" Version="3.16.1">
       <PrivateAssets>all</PrivateAssets>
@@ -31,20 +35,15 @@
   </ItemGroup>
 
   <ItemGroup>
-    <None Remove="ClientApp\src\data\tutorials.ts" />
-  </ItemGroup>
-
-  <ItemGroup>
     <ProjectReference Include="..\Hackerman.EntityFramework\Hackerman.EntityFramework.csproj" />
   </ItemGroup>
+<<<<<<<<< Temporary merge branch 1
+=========
 
   <ItemGroup>
-    <Folder Include="ClientApp\static\" />
+    <TypeScriptCompile Include="ClientApp\src\pages\sign-up.tsx" />
   </ItemGroup>
-
-  <ItemGroup>
-    <TypeScriptCompile Include="ClientApp\src\data\tutorials.ts" />
-  </ItemGroup>
+>>>>>>>>> Temporary merge branch 2
   
   <Target Name="DebugEnsureNodeEnv" BeforeTargets="Build" Condition=" '$(Configuration)' == 'Debug' And !Exists('$(SpaRoot)node_modules') ">
     <!-- Ensure Node.js is installed -->

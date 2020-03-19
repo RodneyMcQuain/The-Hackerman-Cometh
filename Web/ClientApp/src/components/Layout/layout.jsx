@@ -3,10 +3,10 @@ import Navbar from './Navbar';
 import '../../styles/global.scss';
 import 'normalize.css';
 
-const Layout = ({ children }) => (
+const Layout = ({ children, className }) => (
     <>
         <Navbar />
-        <section>{children}</section>
+        <section className={className}>{children}</section>
     </>
 );
 

@@ -1,4 +1,5 @@
 ﻿$navbar-height: 50px;
+$sidebar-width: 200px;
 
 $hide-transition: all .5s ease-in-out;
 $unhide-transition: opacity 1s ease-in-out;
@@ -18,3 +19,12 @@ $banner-header-font-size: 60px;
     visibility: visible;
     transition: $unhide-transition;
 }
+
+$xs-breakpoint: 480px;
+$sm-breakpoint: 576px;
+$md-breakpoint: 768px;
+$lg-breakpoint: 992px;
+$xl-breakpoint: 1200px;
+$xxl-breakpoint: 1600px;
+
+$red: #ff4d4f;

@@ -6,11 +6,46 @@
 
 @import url('https://fonts.googleapis.com/css?family=Roboto&display=swap');
 @import url('https://fonts.googleapis.com/css?family=Open+Sans&display=swap');
+@import 'variables.scss';
 
 h1, h2, h3, h4, h5, h6 {
     font-family: 'Roboto', sans-serif;
 }
 
-p, span, div, a, li, button, select, textarea, option, input {
+p, span, div, a, li, button, select, textarea, option, label {
     font-family: 'Open Sans', sans-serif;
+}
+
+body {
+    overflow: hidden;
+}
+
+.user-form {
+    max-width: 575px;
+    margin: 0 auto !important;
+}
+
+.center-flex {
+    display: flex;
+    justify-content: center;
+}
+
+.padding-container {
+    padding: 15px;
+}
+
+.margin-bottom-0 {
+    margin-bottom: 0 !important;
+}
+
+.margin-bottom-5px {
+    margin-bottom: 5px !important;
+}
+
+.red-text {
+    color: $red;
+}
+
+.center-text {
+    text-align: center;
 }
