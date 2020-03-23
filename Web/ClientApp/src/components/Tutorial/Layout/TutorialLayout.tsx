@@ -1,6 +1,6 @@
 ﻿import React, { useState } from 'react';
 import Layout from '../../Layout/layout';
-import { Layout as AntDLayout, Button, } from 'antd';
+import { Layout as AntDLayout, Button } from 'antd';
 import '../../../styles/tutorial/layout.scss';
 import TutorialCongrats from './TutorialCongrats';
 

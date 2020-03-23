@@ -6,6 +6,7 @@ import { Form, Input, Button } from 'antd';
 import { IToken } from '../models/IToken';
 import { Token } from '../services/token';
 import { LoadingOutlined } from '@ant-design/icons';
+import HiddenPublicRoute from '../components/HiddenPublicRoute';
 
 const formItemLayout = {
     labelCol: {
@@ -37,57 +38,59 @@ const Login = () => {
     const [serverError, setServerError] = useState<number>();
 
     return (
-        <PaddingLayout>
-            <Form
-                form={form}
-                className="user-form"
-                name="login"
-                onFinish={userInfo => attemptLogin(userInfo, setIsLoading, setServerError)}
-            >
-                <Form.Item {...tailFormItemLayout} className="margin-bottom-0">
-                    <h1>Log in</h1>
-                </Form.Item>
-                <Form.Item
-                    {...formItemLayout}
-                    name="username"
-                    label="User Name or E-mail"
-                    className="sign-up-field"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input a username!'
-                        },
-                    ]}
+        <HiddenPublicRoute>
+            <PaddingLayout>
+                <Form
+                    form={form}
+                    className="user-form"
+                    name="login"
+                    onFinish={userInfo => attemptLogin(userInfo, setIsLoading, setServerError)}
                 >
-                    <Input />
-                </Form.Item>
+                    <Form.Item {...tailFormItemLayout} className="margin-bottom-0">
+                        <h1>Log in</h1>
+                    </Form.Item>
+                    <Form.Item
+                        {...formItemLayout}
+                        name="username"
+                        label="User Name or E-mail"
+                        className="sign-up-field"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input a username!'
+                            },
+                        ]}
+                    >
+                        <Input />
+                    </Form.Item>
 
-                <Form.Item
-                    {...formItemLayout}
-                    name="password"
-                    label="Password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input password!',
-                        }
-                    ]}
-                >
+                    <Form.Item
+                        {...formItemLayout}
+                        name="password"
+                        label="Password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input password!',
+                            }
+                        ]}
+                    >
 
-                    <Input.Password />
-                </Form.Item>
+                        <Input.Password />
+                    </Form.Item>
 
-                <Form.Item className="margin-bottom-5px" {...tailFormItemLayout}>
-                    <LoginButton isLoading={isLoading} />
-                </Form.Item>
+                    <Form.Item className="margin-bottom-5px" {...tailFormItemLayout}>
+                        <LoginButton isLoading={isLoading} />
+                    </Form.Item>
 
-                <ErrorMessage statusCode={serverError} />
+                    <ErrorMessage statusCode={serverError} />
 
-                <Form.Item {...tailFormItemLayout}>
-                    <SignUpCTA />
-                </Form.Item>
-            </Form>
-        </PaddingLayout>
+                    <Form.Item {...tailFormItemLayout}>
+                        <SignUpCTA />
+                    </Form.Item>
+                </Form>
+            </PaddingLayout>
+        </HiddenPublicRoute>
     );
 };
 
@@ -112,7 +115,7 @@ const ErrorMessage = ({ statusCode }) => {
         : null;
 }
 
-function attemptLogin(user: IUser, setIsLoading: (boolean) => void, setServerError: (number) => void) {
+function attemptLogin(user: Partial<IUser>, setIsLoading: (boolean) => void, setServerError: (number) => void) {
     setIsLoading(true);
 
     fetch(`api/User/Login`, {
@@ -134,7 +137,7 @@ function attemptLogin(user: IUser, setIsLoading: (boolean) => void, setServerErr
             if (Token.isUserAuthenticated())
                 navigate('/');
         })
-        .catch(() => { setIsLoading(false); });
+        .catch(err => { console.log(err); setIsLoading(false); });
 }
 
 interface LogInButtonProps {

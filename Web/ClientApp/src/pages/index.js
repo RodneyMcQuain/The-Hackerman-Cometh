@@ -1,12 +1,13 @@
 import React from 'react';
-import Layout from '../components/Layout/layout';
 import Banner from '../components/Index/Banner';
+import Tutorials from '../components/Index/Tutorials';
+import { Token } from '../services/token';
 
 const IndexPage = () => {
     return (
-        <Layout>
-            <Banner />
-        </Layout>
+        Token.isUserAuthenticated()
+            ? <Tutorials />
+            : <Banner />
     );
 };
 

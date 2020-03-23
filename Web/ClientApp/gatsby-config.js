@@ -9,5 +9,9 @@ module.exports = {
         `gatsby-plugin-tslint`,
         'gatsby-plugin-antd',
         `gatsby-plugin-sass`,
+        {
+            resolve: `gatsby-plugin-create-client-paths`,
+            options: { prefixes: [`/app/*`] },
+        },
     ],
 }

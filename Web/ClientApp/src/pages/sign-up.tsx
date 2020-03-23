@@ -5,6 +5,7 @@ import { handleResponse } from '../services/handleResponse';
 import { navigate } from 'gatsby';
 import PaddingLayout from '../components/Layout/PaddingLayout';
 import { Form, Input, Button, } from 'antd';
+import HiddenPublicRoute from '../components/HiddenPublicRoute';
 
 const formItemLayout = {
     labelCol: {
@@ -34,114 +35,116 @@ const RegistrationForm = () => {
     const [form] = Form.useForm();
 
     return (
-        <PaddingLayout>
-            <Form
-                form={form}
-                className="user-form"
-                name="register"
-                onFinish={userInfo => saveUserInfo(userInfo)}
-            >
-                <Form.Item {...tailFormItemLayout} className="margin-bottom-0">
-                    <h1>Sign Up</h1>
-                </Form.Item>
-                <Form.Item
-                    {...formItemLayout}
-                    name="username"
-                    label="User Name"
-                    className="sign-up-field"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input a username!'
-                        },
-                        {
-                            whitespace: true,
-                            message: 'User name cannot be whitespace!'
-                        },
-                        () => ({
-                            validator(_rule, value) {
-                                return validateUserName(value);
-                            }
-                        })
-                    ]}
-                    hasFeedback
+        <HiddenPublicRoute>
+            <PaddingLayout>
+                <Form
+                    form={form}
+                    className="user-form"
+                    name="register"
+                    onFinish={userInfo => saveUserInfo(userInfo)}
                 >
-                    <Input />
-                </Form.Item>
-                <Form.Item
-                    {...formItemLayout}
-                    name="email"
-                    label="E-mail"
-                    rules={[
-                        {
-                            type: 'email',
-                            message: 'Email is invalid!',
-                        },
-                        {
-                            required: true,
-                            message: 'Please input your E-mail!',
-                        },
-                        () => ({
-                            validator(_rule, value) {
-                                return validateEmail(value);
-                            }
-                        })
-                    ]}
-                    hasFeedback
-                >
-                    <Input />
-                </Form.Item>
-
-                <Form.Item
-                    {...formItemLayout}
-                    name="password"
-                    label="Password"
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please input password!',
-                        },
-                        () => ({
-                            validator(_rule, value) {
-                                return validatePasswordRequirments(value);
-                            }
-                        })
-                    ]}
-                    hasFeedback
-                >
-
-                    <Input.Password />
-                </Form.Item>
-
-                <Form.Item
-                    {...formItemLayout}
-                    name="confirm"
-                    label="Confirm Password"
-                    dependencies={['password']}
-                    hasFeedback
-                    rules={[
-                        {
-                            required: true,
-                            message: 'Please confirm your password!',
-                        },
-                        ({ getFieldValue }) => ({
-                            validator(_rule, value) {
-                                const password = getFieldValue('password');
-                                return verifyPassword(value, password);
+                    <Form.Item {...tailFormItemLayout} className="margin-bottom-0">
+                        <h1>Sign Up</h1>
+                    </Form.Item>
+                    <Form.Item
+                        {...formItemLayout}
+                        name="username"
+                        label="User Name"
+                        className="sign-up-field"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input a username!'
                             },
-                        }),
-                    ]}
-                >
-                    <Input.Password />
-                </Form.Item>
+                            {
+                                whitespace: true,
+                                message: 'User name cannot be whitespace!'
+                            },
+                            () => ({
+                                validator(_rule, value) {
+                                    return validateUserName(value);
+                                }
+                            })
+                        ]}
+                        hasFeedback
+                    >
+                        <Input />
+                    </Form.Item>
+                    <Form.Item
+                        {...formItemLayout}
+                        name="email"
+                        label="E-mail"
+                        rules={[
+                            {
+                                type: 'email',
+                                message: 'Email is invalid!',
+                            },
+                            {
+                                required: true,
+                                message: 'Please input your E-mail!',
+                            },
+                            () => ({
+                                validator(_rule, value) {
+                                    return validateEmail(value);
+                                }
+                            })
+                        ]}
+                        hasFeedback
+                    >
+                        <Input />
+                    </Form.Item>
 
-                <Form.Item {...tailFormItemLayout}>
-                    <Button type="primary" htmlType="submit">
-                        Sign Up
+                    <Form.Item
+                        {...formItemLayout}
+                        name="password"
+                        label="Password"
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please input password!',
+                            },
+                            () => ({
+                                validator(_rule, value) {
+                                    return validatePasswordRequirments(value);
+                                }
+                            })
+                        ]}
+                        hasFeedback
+                    >
+
+                        <Input.Password />
+                    </Form.Item>
+
+                    <Form.Item
+                        {...formItemLayout}
+                        name="confirm"
+                        label="Confirm Password"
+                        dependencies={['password']}
+                        hasFeedback
+                        rules={[
+                            {
+                                required: true,
+                                message: 'Please confirm your password!',
+                            },
+                            ({ getFieldValue }) => ({
+                                validator(_rule, value) {
+                                    const password = getFieldValue('password');
+                                    return verifyPassword(value, password);
+                                },
+                            }),
+                        ]}
+                    >
+                        <Input.Password />
+                    </Form.Item>
+
+                    <Form.Item {...tailFormItemLayout}>
+                        <Button type="primary" htmlType="submit">
+                            Sign Up
                     </Button>
-                </Form.Item>
-            </Form>
-        </PaddingLayout>
+                    </Form.Item>
+                </Form>
+            </PaddingLayout>
+        </HiddenPublicRoute>
     );
 };
 

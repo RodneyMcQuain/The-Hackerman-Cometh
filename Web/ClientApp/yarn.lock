@@ -4887,6 +4887,13 @@ gatsby-plugin-antd@^2.2.0:
     antd "^4.0.0"
     babel-plugin-import "^1.13.0"
 
+gatsby-plugin-create-client-paths@^2.1.24:
+  version "2.1.24"
+  resolved "https://registry.yarnpkg.com/gatsby-plugin-create-client-paths/-/gatsby-plugin-create-client-paths-2.1.24.tgz#7719df702c083147b98b8d197e4bb095c686e745"
+  integrity sha512-3lYr0EeMmWSzFY5jCMcMcKmx/3p+gT2nounUrhqLCb/IQloc0iX/Z3ES/3wvxwiL4bFk+mNgAJxzDJnVjCgZCQ==
+  dependencies:
+    "@babel/runtime" "^7.8.7"
+
 gatsby-plugin-emotion@^4.1.22:
   version "4.1.24"
   resolved "https://registry.yarnpkg.com/gatsby-plugin-emotion/-/gatsby-plugin-emotion-4.1.24.tgz#cfb7c8b2feb78ec4607c93e876c4835b1794777d"
