@@ -1,7 +1,2 @@
 ﻿User-agent: * 
-Disallow: /*/components/*
-Disallow: /*/data/*
-Disallow: /*/pages/*
-Disallow: /*/models/*
-Disallow: /*/services/*
-Disallow: /*/styles/*
+Disallow: /*/apps/*

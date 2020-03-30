@@ -11,6 +11,7 @@
     "gatsby-plugin-antd": "^2.2.0",
     "gatsby-plugin-emotion": "^4.1.22",
     "gatsby-plugin-react-helmet": "3.1.16",
+    "gatsby-plugin-robots-txt": "^1.5.0",
     "gatsby-plugin-sass": "^2.1.29",
     "gatsby-plugin-tslint": "^0.0.2",
     "gatsby-plugin-typescript": "^2.1.27",

@@ -4,6 +4,9 @@ import Banner from '../components/Index/Banner';
 
 const IndexPage = () => {
     return (
+        <Helmet>
+
+        </Helmet>
         <Layout>
             <Banner />
         </Layout>
