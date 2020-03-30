@@ -6,6 +6,7 @@ import { Form, Input, Button } from 'antd';
 import { IToken } from '../models/IToken';
 import { Token } from '../services/token';
 import { LoadingOutlined } from '@ant-design/icons';
+import SEO from '../components/seo.js';
 
 const formItemLayout = {
     labelCol: {
@@ -37,6 +38,7 @@ const Login = () => {
     const [serverError, setServerError] = useState<number>();
 
     return (
+        
         <PaddingLayout>
             <Form
                 form={form}

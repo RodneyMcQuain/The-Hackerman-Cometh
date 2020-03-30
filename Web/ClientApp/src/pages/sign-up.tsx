@@ -5,6 +5,7 @@ import { handleResponse } from '../services/handleResponse';
 import { navigate } from 'gatsby';
 import PaddingLayout from '../components/Layout/PaddingLayout';
 import { Form, Input, Button, } from 'antd';
+import SEO from '../components/seo.js';
 
 const formItemLayout = {
     labelCol: {
@@ -29,7 +30,15 @@ const tailFormItemLayout = {
         },
     },
 };
-
+interface Props {
+    data: {
+        site: {
+            siteMetadata: {
+                title: string
+            }
+        }
+    }
+}
 const RegistrationForm = () => {
     const [form] = Form.useForm();
 
