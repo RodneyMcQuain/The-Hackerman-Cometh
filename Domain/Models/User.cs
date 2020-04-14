@@ -1,6 +1,6 @@
 using System;
 
-namespace Hackerman.EntityFramework.Models
+namespace Domain.Models
 {
     public class User
     { 

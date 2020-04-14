@@ -1,11 +1,8 @@
-﻿using System;
-using System.Collections.Generic;
-using System.Linq;
-using System.Threading.Tasks;
+﻿using Domain;
+using Domain.Services;
 using Hackerman.EntityFramework;
 using Microsoft.AspNetCore.Builder;
 using Microsoft.AspNetCore.Hosting;
-using Microsoft.AspNetCore.HttpsPolicy;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.Extensions.Configuration;
 using Microsoft.Extensions.DependencyInjection;
@@ -29,6 +26,10 @@ namespace The_Hackerman_Cometh
         {
             services.AddDbContext<HackermanContext>(options =>
                 options.UseSqlServer(Configuration.GetConnectionString("DefaultConnection"), b => b.MigrationsAssembly("Web")));
+
+            services.AddTransient<HashService>();
+            services.AddTransient<CreateJwtQuery>();
+            services.AddTransient<IContext, HackermanContext>();
 
             services.AddControllersWithViews();
 
