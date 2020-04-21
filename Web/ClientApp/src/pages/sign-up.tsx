@@ -167,12 +167,13 @@ function saveUserInfo(userInfo) {
 }
 
 function modifyUserBeforePost(user: IUser): IUser {
-    user.email = user.email.trim();
-    user.username = user.username.trim();
+    let updatedUser = { ...user };
+    updatedUser.email = user.email.trim();
+    updatedUser.username = user.username.trim();
     const today = new Date().toString();
-    user.dateCreated = formatDate(today);
+    updatedUser.dateCreated = formatDate(today);
 
-    return user;
+    return updatedUser;
 }
 
 function validateUserName(userName) {
@@ -218,7 +219,7 @@ function validatePasswordRequirments(password) {
         message += ' one of the following special characters \'?!@#$%^&*\',\n';
 
     if (password.length <= 8)
-        message += ' atleast 8 characters,\n';
+        message += ' at least 8 characters,\n';
 
     if (message !== "")
         return Promise.reject("Passwords must contain: " + message);
@@ -227,10 +228,8 @@ function validatePasswordRequirments(password) {
 }
 
 function verifyPassword(password, passwordValidationString) {
-
-    if (!password || passwordValidationString === password) {
+    if (!password || passwordValidationString === password) 
         return Promise.resolve();
-    }
 
     return Promise.reject('The two passwords that you entered do not match!');
 }

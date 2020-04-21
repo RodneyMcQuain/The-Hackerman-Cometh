@@ -3,11 +3,13 @@ import { IDecodedToken } from '../models/IDecodedToken';
 import { IUserAuthorizationHeaders } from '../models/IUserAuthorizationHeaders';
 import { isBrowser } from './isBrowser';
 
+const SECONDS_IN_MS = 1000;
+const USER_LOCAL_STORAGE_NAME = "user";
+
 export const Token = (function () {
     let isAuthenticated = false;
     let userId = "";
     let token = {} as IToken;
-    const USER_LOCAL_STORAGE_NAME = "user";
 
     const decodeToken = (token: string): IDecodedToken => {
         const base64Url = token.split('.')[1];
@@ -43,7 +45,7 @@ export const Token = (function () {
 
             isAuthenticated = false;
             if (user) {
-                if (decodeToken(user.token).exp < Date.now() / 1000) {
+                if (decodeToken(user.token).exp < Date.now() / SECONDS_IN_MS) {
                     isBrowser() && localStorage.removeItem(USER_LOCAL_STORAGE_NAME);
                     isAuthenticated = false;
                     userId = "0";

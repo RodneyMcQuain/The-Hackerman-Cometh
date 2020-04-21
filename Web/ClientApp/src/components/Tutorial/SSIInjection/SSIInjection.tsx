@@ -10,7 +10,7 @@ import { ValidState } from '../../../models/ISSIInjectionTutorialStateMachine';
 import { lsCommand, ssiLocalStorageKey } from './constants';
 import SSIText from './SSIText';
 import KnowsCredentialsPopover from './KnowsCredentialsPopover';
-import FailedLoginMessage from './FailedLoginMessage';
+import FailedLoginMessage from '../FailedLoginMessage';
 import LsPopover from './LsPopover';
 
 const formItemLayout = {
@@ -76,7 +76,7 @@ const SSIInjection = (): JSX.Element => {
                         </Form.Item>
                     </Form>
                     <SSIText state={state} />
-                    <FailedLoginMessage state={state} username={username} />
+                    <FailedLoginMessage currentState={state} username={username} failureState={'failedLogin'} />
                 </Card>
             </KnowsCredentialsPopover>
         </TutorialLayout>

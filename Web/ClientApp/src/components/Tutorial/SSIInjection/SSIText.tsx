@@ -2,7 +2,7 @@
 import { isBrowser } from '../../../services/isBrowser';
 import TutorialPopover from '../TutorialPopover';
 import { ssiLocalStorageKey, passwordsFilename } from './constants';
-import { getFailedLogInMessage } from './getFailedLogInMessage';
+import { getFailedLogInMessage } from '../getFailedLogInMessage';
 import { ValidState } from '../../../models/ISSIInjectionTutorialStateMachine';
 
 interface SSITextProps {
