@@ -52,12 +52,12 @@ const Login = () => {
                     <Form.Item
                         {...formItemLayout}
                         name="username"
-                        label="User Name or E-mail"
+                        label="Username or E-mail"
                         className="sign-up-field"
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input a username!'
+                                message: 'Please input a username or e-mail!'
                             },
                         ]}
                     >
@@ -71,11 +71,10 @@ const Login = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input password!',
+                                message: 'Please input a password!',
                             }
                         ]}
                     >
-
                         <Input.Password />
                     </Form.Item>
 
@@ -98,10 +97,10 @@ const ErrorMessage = ({ statusCode }) => {
     let message;
 
     if (statusCode === 401)
-        message = "Those credentials are invalid";
+        message = "There is no username or e-mail that matches that password.";
 
     if (statusCode === 404)
-        message = "That username or email does not exist";
+        message = "That username or email does not exist.";
 
     if (statusCode === 500)
         message = "Sorry, there was an unexpected error. Please try again later.";

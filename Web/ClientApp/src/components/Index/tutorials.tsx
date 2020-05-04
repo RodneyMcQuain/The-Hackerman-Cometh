@@ -9,7 +9,7 @@ const Tutorials = () => (
     <AntDLayout>
         <PaddingLayout>
             <>
-                <h1 className="center-text">Tutorials</h1>
+                <h1 className="center-text">Tutorial Selection</h1>
                 <Row justify="space-around" gutter={[16, 16]}>
                     {tutorials.map(tutorial => (
                         <Col style={{ "max-width": "350px" }} key={tutorial.name} xs={24} sm={12} lg={8} xl={6}>
@@ -18,7 +18,7 @@ const Tutorials = () => (
                                 <br />
                                 <br />
                                 <Button type="primary">
-                                    <Link to={`/app/${tutorial.link}`} >
+                                    <Link to={`${tutorial.link}`} >
                                         Start
                                     </Link>
                                 </Button>

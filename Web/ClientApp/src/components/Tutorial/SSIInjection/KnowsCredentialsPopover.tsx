@@ -9,8 +9,8 @@ interface KnowsCredentialsPopoverProps {
 }
 
 const KnowsCredentialsPopover = ({ children, state }: KnowsCredentialsPopoverProps): JSX.Element => {
-    const action = `Type the credentials you found in ${passwordsFilename} into the form`;
-    const description = "You're almost in!";
+    const action = `Type the credentials you found in ${passwordsFilename} into the login form and submit the form`;
+    const description = "You have the credentials you're almost in!";
 
     return (
         <TutorialPopover

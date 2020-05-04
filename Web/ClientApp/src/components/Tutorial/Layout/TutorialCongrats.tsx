@@ -21,7 +21,7 @@ const TutorialCongrats = ({ tutorialTitle, nextTutorialTitle, nextTutorialLink }
                     <Button>
                         <ArrowLeftOutlined />
                         &nbsp;
-                    <Link to={'/'}>Return to tutorials</Link>
+                        <Link to={'/'}>Return to tutorial selection</Link>
                     </Button>
                     <NextTutorialButton nextTutorialTitle={nextTutorialTitle} nextTutorialLink={nextTutorialLink} />
                 </>

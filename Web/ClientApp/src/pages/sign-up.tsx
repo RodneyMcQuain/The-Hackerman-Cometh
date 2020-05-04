@@ -49,7 +49,7 @@ const RegistrationForm = () => {
                     <Form.Item
                         {...formItemLayout}
                         name="username"
-                        label="User Name"
+                        label="Username"
                         className="sign-up-field"
                         rules={[
                             {
@@ -58,7 +58,7 @@ const RegistrationForm = () => {
                             },
                             {
                                 whitespace: true,
-                                message: 'User name cannot be whitespace!'
+                                message: 'Username cannot be whitespace!'
                             },
                             () => ({
                                 validator(_rule, value) {
@@ -81,7 +81,7 @@ const RegistrationForm = () => {
                             },
                             {
                                 required: true,
-                                message: 'Please input your E-mail!',
+                                message: 'Please input an E-mail!',
                             },
                             () => ({
                                 validator(_rule, value) {
@@ -93,7 +93,6 @@ const RegistrationForm = () => {
                     >
                         <Input />
                     </Form.Item>
-
                     <Form.Item
                         {...formItemLayout}
                         name="password"
@@ -101,7 +100,7 @@ const RegistrationForm = () => {
                         rules={[
                             {
                                 required: true,
-                                message: 'Please input password!',
+                                message: 'Please input a password!',
                             },
                             () => ({
                                 validator(_rule, value) {
@@ -111,10 +110,8 @@ const RegistrationForm = () => {
                         ]}
                         hasFeedback
                     >
-
                         <Input.Password />
                     </Form.Item>
-
                     <Form.Item
                         {...formItemLayout}
                         name="confirm"
@@ -136,11 +133,10 @@ const RegistrationForm = () => {
                     >
                         <Input.Password />
                     </Form.Item>
-
                     <Form.Item {...tailFormItemLayout}>
                         <Button type="primary" htmlType="submit">
                             Sign Up
-                    </Button>
+                        </Button>
                     </Form.Item>
                 </Form>
             </PaddingLayout>
@@ -184,7 +180,7 @@ function validateUserName(userName) {
         .then(response => handleResponse(navigate, response))
         .then(response => {
             if (response.status === 400)
-                return Promise.reject('User-Name is already in use!');
+                return Promise.reject('Username is already in use! Please select a different one.');
             else
                 return Promise.resolve();
         });
@@ -197,7 +193,7 @@ function validateEmail(email) {
     return fetch(`api/User/CheckEmail/${email}`)
         .then(response => {
             if (response.status === 400)
-                return Promise.reject('Email is already in use!');
+                return Promise.reject('E-mail is already in use! Please select a different one.');
             else
                 return Promise.resolve();
         });
@@ -218,7 +214,7 @@ function validatePasswordRequirments(password) {
     if (password.search('[?!@#$%^&*]') === -1)
         message += ' one of the following special characters \'?!@#$%^&*\',\n';
 
-    if (password.length <= 8)
+    if (password.length < 8)
         message += ' at least 8 characters,\n';
 
     if (message !== "")
@@ -231,7 +227,7 @@ function verifyPassword(password, passwordValidationString) {
     if (!password || passwordValidationString === password) 
         return Promise.resolve();
 
-    return Promise.reject('The two passwords that you entered do not match!');
+    return Promise.reject('The password confirmation does not match the password you entered!');
 }
 
 

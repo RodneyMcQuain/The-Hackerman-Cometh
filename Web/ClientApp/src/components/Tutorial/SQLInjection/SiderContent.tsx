@@ -3,11 +3,12 @@
 const SiderContent = (): JSX.Element => (
     <>
         <p>
-            SQL injections require the manipulation of queries that will always return true with some given information, usually found on the website itself or through prior knowledge. 
+            Structured query language (SQL) injections often manipulate a query to always return true. 
         </p>
         <p>
-            This example takes the admin email and turns it into a SQL query that will always return true and allow log in if the database is not secured.
-            There are other queries that will yield the same result, but for this tutorial, we will only touch on the basics.
+            This example takes a SQL query for a login form and manipulates it so that it will return true, thus allowing a login if the system is not secured.
+            There are other methods that will yield the same result, but this tutorial will only cover one option for simplicity's sake. 
+            There are also systems where this exact method will not work, but others will.
         </p>
     </>
 );

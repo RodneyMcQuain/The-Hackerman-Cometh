@@ -12,6 +12,7 @@ import SSIText from './SSIText';
 import KnowsCredentialsPopover from './KnowsCredentialsPopover';
 import FailedLoginMessage from '../FailedLoginMessage';
 import LsPopover from './LsPopover';
+import { sqlInjectionLink } from '../tutorialLinks';
 
 const formItemLayout = {
     labelCol: {
@@ -46,7 +47,7 @@ const SSIInjection = (): JSX.Element => {
             isCompleted={state === 'finish'}
             tutorialTitle={ssiInjectionTitle}
             nextTutorialTitle={sqlInjectionTitle}
-            nextTutorialLink={'/sql-injection'}
+            nextTutorialLink={sqlInjectionLink}
             SiderContent={SiderContent()}
         >
             <KnowsCredentialsPopover state={state}>
