@@ -8,7 +8,7 @@ The Hackerman Cometh teaches security vulnerabilities through the use of interac
   </a>
 </p>
 
- > This project was done in Spring 2020 with strict feature and time constraints for CS360—a software engineering course at Purdue University Fort Wayne.  If you want to see the required documentation in all of its verbosity, check out: [CS360 - The Hackerman Cometh Final Documentation](Documentation/CS360 - The Hackerman Cometh Final Documentation).  It contains:
+ > This project was done in Spring 2020 with strict feature and time constraints for CS360—a software engineering course at Purdue University Fort Wayne.  If you want to see the required documentation in all of its verbosity, check out: [CS360 - The Hackerman Cometh Final Documentation](Documentation/CS360%20-%20The%20Hackerman%20Cometh%20Final%20Documentation.pdf).  It contains:
  > * Glossary
  > * Use Case Model
  > * Class Models
