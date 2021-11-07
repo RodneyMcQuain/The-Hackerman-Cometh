@@ -7,9 +7,21 @@ The Hackerman Cometh teaches security vulnerabilities through the use of interac
     <p align="center">Watch a demo for The Hackerman Cometh</p>
   </a>
 </p>
- 
- > This project was done in Spring 2020 with strict feature and time constraints for CS360—a software engineering course at Purdue University Fort Wayne.
- 
+
+ > This project was done in Spring 2020 with strict feature and time constraints for CS360—a software engineering course at Purdue University Fort Wayne.  If you want to see the required documentation in all of its verbosity, check out: [CS360 - The Hackerman Cometh Final Documentation](Documentation/CS360 - The Hackerman Cometh Final Documentation).  It contains:
+ > * Glossary
+ > * Use Case Model
+ > * Class Models
+ > * Data Models
+ > * State Model
+ > * Implementation Modules
+ > * Design Patterns Used
+ > * Cohesion Involved
+ > * Coupling Involved
+ > * Testing Report
+ > * Demo Screenshots
+ > * Tools Used
+
 ## Installation
 * Install [Visual Studio 2019 Community](https://visualstudio.microsoft.com/vs/)
 * Install [npm](https://www.npmjs.com/get-npm)
