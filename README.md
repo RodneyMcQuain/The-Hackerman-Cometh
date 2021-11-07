@@ -26,3 +26,14 @@ The Hackerman Cometh teaches security vulnerabilities through the use of interac
 * In the `Web` project navigate to the `ClientApp` directory and run `yarn build`
 * In the `Web` project navigate to the `ClientApp` directory and run `yarn serve -p 8000`
 * In Visual Studio Navigate to Debug -> Start Without Debugging (Ctrl+F5)
+
+## Technology
+* GatsbyJS (ReactJS)
+* TypeScript
+* C#
+* ASP.NET Core
+* SQL Server
+* Entity Framework Core
+* SCSS
+* JSON Web Token
+* Ant Design
